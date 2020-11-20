@@ -1,8 +1,8 @@
-package shape;
+package src.shape;
 
 import java.awt.*;
 
-public class Circle implements Shape {
+public class Circle implements src.shape.Shapes {
 
 	Point center;
 	Double radius;
@@ -13,17 +13,25 @@ public class Circle implements Shape {
 	}
 
 	/**
-	 * Move this shape to the desired position
+	 * Draw this src.shape
+	 */
+	@Override
+	public void draw(Graphics graphics) {
+
+	}
+
+	/**
+	 * Move this src.shape top left corner to the desired position
 	 *
 	 * @param position The new point to move to
 	 */
 	@Override
 	public void moveTo(Point position) {
-
+		this.center = position;
 	}
 
 	/**
-	 * Rotate this shape by the desired angle
+	 * Rotate this src.shape by the desired angle
 	 *
 	 * @param angle the angle to rotate in degrees between 0 and 360
 	 */
@@ -33,9 +41,9 @@ public class Circle implements Shape {
 	}
 
 	/**
-	 * Gets the color of a shape
+	 * Gets the color of a src.shape
 	 *
-	 * @return This shape color
+	 * @return This src.shape color
 	 */
 	@Override
 	public Color getColor() {
@@ -43,9 +51,9 @@ public class Circle implements Shape {
 	}
 
 	/**
-	 * Change the color of a shape
+	 * Change the color of a src.shape
 	 *
-	 * @param color The new color of the shape
+	 * @param color The new color of the src.shape
 	 */
 	@Override
 	public void setColor(Color color) {
