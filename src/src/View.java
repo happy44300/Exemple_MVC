@@ -1,6 +1,5 @@
 package src;
 
-import src.path.DrawingPanel;
 import src.shape.Shapes;
 import src.shape.Square;
 
@@ -13,8 +12,10 @@ import java.awt.event.ActionListener;
  *  Provide an display to the app
  */
 public class View extends JFrame {
-
-	private final DrawingPanel drawingPanel = new DrawingPanel();
+	/**
+	 * The drawing panel to be use
+	 */
+	private final _DrawingPanel drawingPanel = new _DrawingPanel();
 
 	/**
 	 * Class constructor
@@ -45,53 +46,93 @@ public class View extends JFrame {
 	 * build the windows content
 	 */
 	private void buildContentPane() {
-		JPanel panel = new JPanel();
-		JPanel LPanel = new JPanel();
 
+		//create main panel
+		JPanel panel = new JPanel();
+		getContentPane().add(panel);
 		panel.setLayout(new BorderLayout());
 
-		getContentPane().add(panel);
-		getContentPane().add(panel);
-		panel.add(new JLabel("CENTER␣JPanel"));
-
+		//add the panel used for render
 		panel.add(drawingPanel, BorderLayout.CENTER);
-		panel.add(LPanel, BorderLayout.LINE_END);
-		LPanel.setLayout(new BoxLayout(LPanel, BoxLayout.Y_AXIS));
 
-		LPanel.add(new JButton("oui"));
+		//create the panel used as a container for GUI interface
+		JPanel GUIPanel = new JPanel();
+		panel.add(GUIPanel, BorderLayout.LINE_END);
+		GUIPanel.setLayout(new BoxLayout(GUIPanel, BoxLayout.Y_AXIS));
 
-		ButtonGroup shapeButtonGroup = new ButtonGroup();
+		//add Speed slider
+		GUIPanel.add(new JLabel("Movement Speed"));
+		GUIPanel.add(new JSlider(JSlider.HORIZONTAL,0,100,0));
+
+		//add rotation speed slider
+		GUIPanel.add(new JLabel("Rotation Speed"));
+		GUIPanel.add(new JSlider(JSlider.HORIZONTAL,0,100,0));
 
 		//list all the possible src.shape that exist
-		JRadioButton[] shapeButtonTab = {new JRadioButton("Lemniscate"), new JRadioButton("spirale")};
+		GUIPanel.add(new JLabel("Select a shape"));
+		JRadioButton[] pathButtons = {new JRadioButton("Lemniscate"), new JRadioButton("spirale")};
+		ButtonGroup pathButtonsGroup = new ButtonGroup();
 
-		for (JRadioButton button : shapeButtonTab){
-			shapeButtonGroup.add(button);
+		for (JRadioButton button : pathButtons){
+			pathButtonsGroup.add(button);
 			button.setSelected(false);
-			LPanel.add(button);
+			GUIPanel.add(button);
 			button.addActionListener(new ShapeListener());
 		}
-		shapeButtonTab[0].setSelected(true);
+		pathButtons[0].setSelected(true);
 
-		setShape(new Square(new Point(0,0), 10, this));
+		//list all the possible Path that exist
+		GUIPanel.add(new JLabel("Select a path"));
+		JRadioButton[] shapeButtons = {new JRadioButton("Square"), new JRadioButton("Circle")};
+		ButtonGroup shapeButtonGroup = new ButtonGroup();
+
+		for (JRadioButton button : shapeButtons){
+			shapeButtonGroup.add(button);
+			button.setSelected(false);
+			GUIPanel.add(button);
+			button.addActionListener(new PathListener());
+		}
+		shapeButtons[0].setSelected(true);
+
+		//TODO: remove this debug statement once the game loop is added
+		setShape(new Square(new Point(20,20), 10, 45, this));
 	}
 
 	/**
 	 * Set the currently drawn src.shape
-	 * @param shape the src.shape to be drawn
+	 * @param shape the Shape to be drawn
 	 */
 	public void setShape(Shapes shape){
 		drawingPanel.setShape(shape);
 	}
 
 	/**
-	 * update the current displayed graphic
+	 * Redraw the current display
 	 */
 	public void update(){
 		drawingPanel.paintComponent(getGraphics());
 	}
 
+	/**
+	 * Event listener class for button selecting a Shape
+	 */
 	private class ShapeListener implements ActionListener{
+
+		/**
+		 * Invoked when an action occurs.
+		 *
+		 * @param e the event to be processed
+		 */
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+		}
+	}
+
+	/**
+	 * Event listener class for button selecting a Path
+	 */
+	private class PathListener implements ActionListener{
 
 		/**
 		 * Invoked when an action occurs.

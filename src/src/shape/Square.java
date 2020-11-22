@@ -5,52 +5,79 @@ import src.View;
 
 import java.awt.*;
 
+/**
+ * Class representing a square
+ */
 public class Square implements Shapes {
 
-	Point topLeftCorner;
-	int size;
-	View view;
+	/**
+	 * the top left corner point of the square
+	 */
+	private Point _topLeftCorner;
+	/**
+	 * The length of a square side
+	 */
+	private int _size;
+	/**
+	 * The view linked to this square
+	 */
+	private View _view;
+	/**
+	 *
+	 */
+	private int _rotation;
 
-	public Square(Point topLeftCorner, int size, View view) {
-		this.topLeftCorner = topLeftCorner;
-		this.size = size;
-		this.view = view;
+	/**
+	 * Constructor for class Square
+	 * @param topLeftCorner the top left corner from witch the square will be drawn
+	 * @param size the length of a side
+	 * @param rotation the rotation of the square
+	 * @param view the view that this square will be linked to
+	 */
+	public Square(Point topLeftCorner, int size, int rotation, View view) {
+		this._topLeftCorner = topLeftCorner;
+		this._size = size;
+		this._view = view;
+		this._rotation = rotation;
 	}
 
 	/**
-	 * Draw this src.shape
+	 * Draw this shape
+	 * @param graphics The graphic context drawn on
 	 */
 	@Override
 	public void draw(Graphics graphics) {
-		graphics.drawRect(this.topLeftCorner.x, this.topLeftCorner.y, size,size);
+		Graphics2D g2d = (Graphics2D)graphics;
+		g2d.rotate(Math.toRadians(this._rotation));
+		graphics.drawRect(this._topLeftCorner.x, this._topLeftCorner.y, _size, _size);
 
 	}
 
 	/**
-	 * Move this src.shape to the desired position
+	 * Move this shape to the desired position
 	 *
 	 * @param position The new point to move to
 	 */
 	@Override
 	public void moveTo(Point position) {
-		this.topLeftCorner = position;
-		view.update();
+		this._topLeftCorner = position;
+		_view.update();
 	}
 
 	/**
-	 * Rotate this src.shape by the desired angle
+	 * Rotate this shape by the desired angle
 	 *
 	 * @param angle the angle to rotate in degrees between 0 and 360
 	 */
 	@Override
 	public void rotate(int angle) {
-
+		this._rotation = angle;
 	}
 
 	/**
 	 * Gets the color of a src.shape
 	 *
-	 * @return This src.shape color
+	 * @return This shape color
 	 */
 	@Override
 	public Color getColor() {

@@ -1,15 +1,18 @@
 package src.path;
 
-
 import java.awt.*;
 
 /**
- * Interface for all classes implementing an shape path
+ * Class representing a path
  */
-public interface Path {
+public class ArchimedeanSpiral implements Path {
     /**
      * Get the point that are on this src.path
+     *
      * @return The next point followed by this Path
      */
-    Point getNextPoint();
+    @Override
+    public Point getNextPoint() {
+        return null;
+    }
 }

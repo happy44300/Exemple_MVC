@@ -2,14 +2,28 @@ package src.shape;
 
 import java.awt.*;
 
+/**
+ * Class representing a circle
+ */
 public class Circle implements src.shape.Shapes {
 
-	Point center;
-	Double radius;
+	/**
+	 * The center of this circle
+	 */
+	private Point _center;
+	/**
+	 * The radius of this circle, in pixel
+	 */
+	private Double _radius;
 
+	/**
+	 * Class constructor
+	 * @param center The center of the circle
+	 * @param radius The radius of the circle
+	 */
 	public Circle(Point center, Double radius) {
-		this.center = center;
-		this.radius = radius;
+		this._center = center;
+		this._radius = radius;
 	}
 
 	/**
@@ -27,8 +41,9 @@ public class Circle implements src.shape.Shapes {
 	 */
 	@Override
 	public void moveTo(Point position) {
-		this.center = position;
+		this._center = position;
 	}
+
 
 	/**
 	 * Rotate this src.shape by the desired angle

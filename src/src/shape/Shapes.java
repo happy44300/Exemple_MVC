@@ -2,10 +2,14 @@ package src.shape;
 
 import java.awt.*;
 
+/**
+ * Interface for all object implementing a shape
+ */
 public interface Shapes {
 
     /**
      * Draw this src.shape
+     * @param graphic The graphic context drawn on
      */
     void draw(Graphics graphic);
 
