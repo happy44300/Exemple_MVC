@@ -15,7 +15,7 @@ public class View extends JFrame {
 	/**
 	 * The drawing panel to be use
 	 */
-	private final _DrawingPanel drawingPanel = new _DrawingPanel();
+	private final DrawingPanel drawingPanel = new DrawingPanel();
 
 	/**
 	 * Class constructor

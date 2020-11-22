@@ -8,7 +8,7 @@ import java.awt.*;
 /**
  * This class represent the panel on witch the shape are drawn
  */
-public class _DrawingPanel extends JPanel {
+public class DrawingPanel extends JPanel {
 
 
     /**
@@ -30,7 +30,7 @@ public class _DrawingPanel extends JPanel {
     }
 
     /**
-     * paint
+     * Draw the shape assigned to this component
      * @param graphics The graphic context drawn on
      */
     public void paintComponent(Graphics graphics) {
