@@ -40,4 +40,11 @@ public interface Shapes {
      * @param color The new color of the src.shape
      */
     void setColor(Color color);
+
+    /**
+     * Get the rotation of a shape
+     * @return this shape rotation
+     */
+    int getRotation();
+
 }

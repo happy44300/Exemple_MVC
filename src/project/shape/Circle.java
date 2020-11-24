@@ -82,4 +82,13 @@ public class Circle implements project.shape.Shapes {
 	public void setColor(Color color) {
 
 	}
+
+	/**
+	 * Get the rotation of a shape
+	 * @return this shape rotation
+	 */
+	@Override
+	public int getRotation() {
+		return 0;
+	}
 }

@@ -1,7 +1,9 @@
 package project;
 
+import project.path.CirclePath;
 import project.path.Path;
 import project.shape.Shapes;
+import project.shape.Square;
 
 import java.awt.*;
 
@@ -39,12 +41,14 @@ public class Model {
 	/**
 	 * Constructor for model
 	 */
-	public Model(Shapes shape, Path path) {
-		this.shape = shape;
-		this.path = path;
+	public Model() {
+		this.shape = null;
+		this.path = new CirclePath();
 	}
 
 	public void evolve(){
+		if(this.path == null || this.shape == null){return;}
 		shape.moveTo(path.getNextPoint());
+		shape.rotate(shape.getRotation() + 1);
 	}
 }

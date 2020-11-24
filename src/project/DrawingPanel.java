@@ -11,30 +11,13 @@ import java.util.ArrayList;
  */
 public class DrawingPanel extends JPanel {
 
+    private Model model;
 
     /**
-     * the currently selected shape to draw
+     * Creates a new DrawingPanel
      */
-    private ArrayList<Shapes> _shapeList = new ArrayList<>();
-
-    /**
-     * Creates a new <code>JPanel</code> with a double buffer
-     * and a flow layout.
-     */
-
-    /**
-     *  Set the currently drawn shape
-     * @param shape the new shape to be drawn
-     */
-    public void addShape(Shapes shape){
-        this._shapeList.add(shape);
-    }
-
-    /**
-     * clear the list of displayed shape
-     */
-    public void voidClearShape(){
-        _shapeList.clear();
+    public DrawingPanel(Model model) {
+        this.model = model;
     }
 
     /**
@@ -42,11 +25,8 @@ public class DrawingPanel extends JPanel {
      * @param graphics The graphic context drawn on
      */
     public void paintComponent(Graphics graphics) {
-        super.paintComponent(graphics);
-        for(Shapes shape : _shapeList) {
-            if (shape != null)
-                shape.draw(graphics);
-        }
+            if (model.getShape() != null)
+                model.getShape().draw(graphics);
     }
 
 }

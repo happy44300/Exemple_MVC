@@ -17,15 +17,16 @@ import java.util.Enumeration;
  */
 public class View extends JFrame implements ActionListener {
 
-	/**
-	 * The drawing panel associated to this view
-	 */
-	private final DrawingPanel drawingPanel = new DrawingPanel();
 
 	/**
 	 * The model associated to this view
 	 */
-	private final Model model = new Model(new Square(new Point(100,100),20,0,this), new CirclePath());
+	private final Model model = new Model();
+
+	/**
+	 * The drawing panel associated to this view
+	 */
+	private final DrawingPanel drawingPanel = new DrawingPanel(model);
 
 	/**
 	 * Invoked when an action occurs.
@@ -129,17 +130,7 @@ public class View extends JFrame implements ActionListener {
 		}
 		shapeButtons[0].setSelected(true);
 
-		drawingPanel.addShape(this.model.getShape());
 	}
-
-	/**
-	 * Set the currently drawn src.shape
-	 * @param shape the Shape to be drawn
-	 */
-	public void addShape(Shapes shape){
-		drawingPanel.addShape(shape);
-	}
-
 
 	/**
 	 * Redraw the current display
@@ -186,8 +177,6 @@ public class View extends JFrame implements ActionListener {
 				case "Circle":
 					model.setShape(new Circle(new Point(200,200),(double) 10, view));
 					break;
-				default:
-					break;
 			}
 		}
 	}
@@ -225,12 +214,10 @@ public class View extends JFrame implements ActionListener {
 			System.out.println(selectedButtonText);
 			switch (selectedButtonText){
 				case "Lemniscate":
-					model.setShape(new Square(new Point(100,100),10,10,view));
+					model.setPath(new LemniscateOfBernoulli());
 					break;
 				case "Spiral":
-					model.setShape(new Circle(new Point(100,100),(double) 10, view));
-					break;
-				default:
+					model.setPath(new CirclePath());
 					break;
 			}
 		}

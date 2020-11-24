@@ -49,7 +49,7 @@ public class Square implements Shapes {
 	@Override
 	public void draw(Graphics graphics) {
 		Graphics2D g2d = (Graphics2D)graphics;
-		g2d.rotate(Math.toRadians(this._rotation));
+		g2d.rotate(Math.toRadians(this._rotation),this._topLeftCorner.x + this._size/2, this._topLeftCorner.y + this._size/2);
 		graphics.drawRect(this._topLeftCorner.x, this._topLeftCorner.y, _size, _size);
 
 	}
@@ -73,6 +73,16 @@ public class Square implements Shapes {
 	@Override
 	public void rotate(int angle) {
 		this._rotation = angle;
+		_view.update();
+	}
+
+	/**
+	 * Get the rotation of a shape
+	 * @return this shape rotation
+	 */
+	@Override
+	public int getRotation() {
+		return this._rotation;
 	}
 
 	/**
