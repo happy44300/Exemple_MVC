@@ -1,5 +1,7 @@
 package src.shape;
 
+import src.View;
+
 import java.awt.*;
 
 /**
@@ -17,13 +19,19 @@ public class Circle implements src.shape.Shapes {
 	private Double _radius;
 
 	/**
+	 * The view linked to this square
+	 */
+	private View _view;
+
+	/**
 	 * Class constructor
 	 * @param center The center of the circle
 	 * @param radius The radius of the circle
 	 */
-	public Circle(Point center, Double radius) {
+	public Circle(Point center, Double radius,View view) {
 		this._center = center;
 		this._radius = radius;
+		this._view = view;
 	}
 
 	/**

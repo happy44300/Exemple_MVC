@@ -4,6 +4,7 @@ package src.shape;
 import src.View;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Class representing a square
@@ -23,9 +24,10 @@ public class Square implements Shapes {
 	 */
 	private View _view;
 	/**
-	 *
+	 * The rotation of this square
 	 */
 	private int _rotation;
+
 
 	/**
 	 * Constructor for class Square
