@@ -3,6 +3,8 @@ package project;
 import project.path.Path;
 import project.shape.Shapes;
 
+import java.awt.*;
+
 /**
  * The project model
  */
@@ -42,5 +44,7 @@ public class Model {
 		this.path = path;
 	}
 
-	public Model(){ }
+	public void evolve(){
+		shape.moveTo(path.getNextPoint());
+	}
 }

@@ -1,5 +1,6 @@
 package project;
 
+import project.path.CirclePath;
 import project.path.LemniscateOfBernoulli;
 import project.shape.Circle;
 import project.shape.Shapes;
@@ -14,7 +15,7 @@ import java.util.Enumeration;
 /**
  *  Provide an display to the app
  */
-public class View extends JFrame {
+public class View extends JFrame implements ActionListener {
 
 	/**
 	 * The drawing panel associated to this view
@@ -24,7 +25,22 @@ public class View extends JFrame {
 	/**
 	 * The model associated to this view
 	 */
-	private final Model model = new Model(new Square(new Point(100,100),20,0,this), new LemniscateOfBernoulli());
+	private final Model model = new Model(new Square(new Point(100,100),20,0,this), new CirclePath());
+
+	/**
+	 * Invoked when an action occurs.
+	 *
+	 * @param e the event to be processed
+	 */
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		model.evolve();
+	}
+
+	/**
+	 * The timer for reading and updating the model data
+	 */
+	Timer timer = new Timer(16,this);
 
 	/**
 	 * Class constructor
@@ -57,6 +73,8 @@ public class View extends JFrame {
 		setResizable(true);
 		pack();
 		update();
+		timer.setRepeats(true);
+		timer.start();
 	}
 
 	/**
@@ -110,6 +128,8 @@ public class View extends JFrame {
 			button.addActionListener(new ShapeListener(this, shapeButtonGroup));
 		}
 		shapeButtons[0].setSelected(true);
+
+		drawingPanel.addShape(this.model.getShape());
 	}
 
 	/**
@@ -159,13 +179,12 @@ public class View extends JFrame {
 					selectedButtonText = button.getText();
 				}
 			}
-			System.out.println(selectedButtonText);
 			switch (selectedButtonText){
 				case "Square":
 					model.setShape(new Square(new Point(100,100),10,10,view));
 					break;
 				case "Circle":
-					model.setShape(new Circle(new Point(100,100),(double) 10, view));
+					model.setShape(new Circle(new Point(200,200),(double) 10, view));
 					break;
 				default:
 					break;
@@ -216,4 +235,6 @@ public class View extends JFrame {
 			}
 		}
 	}
+
+
 }
