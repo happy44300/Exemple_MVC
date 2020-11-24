@@ -1,13 +1,13 @@
-package src.shape;
+package project.shape;
 
-import src.View;
+import project.View;
 
 import java.awt.*;
 
 /**
  * Class representing a circle
  */
-public class Circle implements src.shape.Shapes {
+public class Circle implements project.shape.Shapes {
 
 	/**
 	 * The center of this circle

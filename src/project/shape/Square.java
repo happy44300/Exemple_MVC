@@ -1,10 +1,9 @@
 
-package src.shape;
+package project.shape;
 
-import src.View;
+import project.View;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * Class representing a square

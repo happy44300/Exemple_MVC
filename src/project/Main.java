@@ -1,10 +1,6 @@
-package src;
-
-import src.path.LemniscateOfBernoulli;
-import src.shape.Square;
+package project;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Main {
 

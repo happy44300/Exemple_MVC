@@ -1,4 +1,4 @@
-package src.path;
+package project.path;
 
 
 import java.awt.*;

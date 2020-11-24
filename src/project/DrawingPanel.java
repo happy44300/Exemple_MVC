@@ -1,6 +1,6 @@
-package src;
+package project;
 
-import src.shape.Shapes;
+import project.shape.Shapes;
 
 import javax.swing.*;
 import java.awt.*;

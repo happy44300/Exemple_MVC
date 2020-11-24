@@ -1,12 +1,7 @@
-package src;
+package project;
 
-import src.path.LemniscateOfBernoulli;
-import src.path.Path;
-import src.shape.Shapes;
-import src.shape.Square;
-
-import javax.swing.*;
-import java.awt.*;
+import project.path.Path;
+import project.shape.Shapes;
 
 /**
  * The project model

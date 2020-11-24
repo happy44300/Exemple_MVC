@@ -1,14 +1,15 @@
-package src.path;
+package project.path;
+
 
 import java.awt.*;
 
 /**
- * Class representing a path
+ * Represent the points of a Lemniscate of Bernoulli
  */
-public class ArchimedeanSpiral implements Path {
+public class LemniscateOfBernoulli implements Path {
+
     /**
-     * Get the point that are on this src.path
-     *
+     * Get the point that are on this Path
      * @return The next point followed by this Path
      */
     @Override

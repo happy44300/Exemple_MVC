@@ -1,9 +1,9 @@
-package src;
+package project;
 
-import src.path.LemniscateOfBernoulli;
-import src.shape.Circle;
-import src.shape.Shapes;
-import src.shape.Square;
+import project.path.LemniscateOfBernoulli;
+import project.shape.Circle;
+import project.shape.Shapes;
+import project.shape.Square;
 
 import javax.swing.*;
 import java.awt.*;
