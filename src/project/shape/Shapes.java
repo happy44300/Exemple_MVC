@@ -47,4 +47,11 @@ public interface Shapes {
      */
     int getRotation();
 
+    /**
+     * Return true the point is in this shape
+     * @param point The point to test
+     * @return a boolean representing if the point is in this shape
+     */
+    boolean contain(Point point);
+
 }

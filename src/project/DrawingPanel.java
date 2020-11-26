@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class DrawingPanel extends JPanel {
 
-    private Model model;
+    private final Model model;
 
     /**
      * Creates a new DrawingPanel

@@ -17,15 +17,17 @@ public class Square implements Shapes {
 	/**
 	 * The length of a square side
 	 */
-	private int _size;
+	private final int _size;
 	/**
 	 * The view linked to this square
 	 */
-	private View _view;
+	private final View _view;
 	/**
 	 * The rotation of this square
 	 */
 	private int _rotation;
+
+	private Color color;
 
 
 	/**
@@ -49,7 +51,7 @@ public class Square implements Shapes {
 	@Override
 	public void draw(Graphics graphics) {
 		Graphics2D g2d = (Graphics2D)graphics;
-		g2d.rotate(Math.toRadians(this._rotation),this._topLeftCorner.x + this._size/2, this._topLeftCorner.y + this._size/2);
+		g2d.rotate(Math.toRadians(this._rotation),this._topLeftCorner.x + this._size/2.0, this._topLeftCorner.y + this._size/2.0);
 		graphics.drawRect(this._topLeftCorner.x, this._topLeftCorner.y, _size, _size);
 
 	}
@@ -86,13 +88,24 @@ public class Square implements Shapes {
 	}
 
 	/**
+	 * Return true the point is in this shape
+	 *
+	 * @param point The point to test
+	 * @return a boolean representing if the point is in this shape
+	 */
+	@Override
+	public boolean contain(Point point) {
+		return false;
+	}
+
+	/**
 	 * Gets the color of a src.shape
 	 *
 	 * @return This shape color
 	 */
 	@Override
 	public Color getColor() {
-		return null;
+		return this.color;
 	}
 
 	/**
@@ -102,6 +115,6 @@ public class Square implements Shapes {
 	 */
 	@Override
 	public void setColor(Color color) {
-
+		this.color = color;
 	}
 }

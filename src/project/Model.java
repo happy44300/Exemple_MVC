@@ -6,6 +6,7 @@ import project.shape.Shapes;
 import project.shape.Square;
 
 import java.awt.*;
+import java.util.Observable;
 
 /**
  * The project model
@@ -46,9 +47,4 @@ public class Model {
 		this.path = new CirclePath();
 	}
 
-	public void evolve(){
-		if(this.path == null || this.shape == null){return;}
-		shape.moveTo(path.getNextPoint());
-		shape.rotate(shape.getRotation() + 1);
-	}
 }

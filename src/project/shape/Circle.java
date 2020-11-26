@@ -16,12 +16,12 @@ public class Circle implements project.shape.Shapes {
 	/**
 	 * The radius of this circle, in pixel
 	 */
-	private Double _radius;
+	private final Double _radius;
 
 	/**
 	 * The view linked to this square
 	 */
-	private View _view;
+	private final View _view;
 
 	/**
 	 * Class constructor
@@ -90,5 +90,16 @@ public class Circle implements project.shape.Shapes {
 	@Override
 	public int getRotation() {
 		return 0;
+	}
+
+	/**
+	 * Return true the point is in this shape
+	 *
+	 * @param point The point to test
+	 * @return a boolean representing if the point is in this shape
+	 */
+	@Override
+	public boolean contain(Point point) {
+		return false;
 	}
 }

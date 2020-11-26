@@ -8,7 +8,7 @@ import java.awt.*;
  */
 public class LemniscateOfBernoulli implements Path {
 
-    private int distance = 0;
+    private final int distance = 0;
     /**
      * Get the point that are on this Path
      * @return The next point followed by this Path

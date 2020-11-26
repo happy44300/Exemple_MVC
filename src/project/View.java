@@ -1,9 +1,10 @@
 package project;
 
+import project.controller.KeyboardController;
+import project.controller.MouseController;
 import project.path.CirclePath;
 import project.path.LemniscateOfBernoulli;
 import project.shape.Circle;
-import project.shape.Shapes;
 import project.shape.Square;
 
 import javax.swing.*;
@@ -15,33 +16,20 @@ import java.util.Enumeration;
 /**
  *  Provide an display to the app
  */
-public class View extends JFrame implements ActionListener {
+public class View extends JFrame {
 
 
 	/**
 	 * The model associated to this view
 	 */
-	private final Model model = new Model();
+	private final Model model;
 
 	/**
 	 * The drawing panel associated to this view
 	 */
-	private final DrawingPanel drawingPanel = new DrawingPanel(model);
+	private final DrawingPanel drawingPanel;
 
-	/**
-	 * Invoked when an action occurs.
-	 *
-	 * @param e the event to be processed
-	 */
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		model.evolve();
-	}
 
-	/**
-	 * The timer for reading and updating the model data
-	 */
-	Timer timer = new Timer(16,this);
 
 	/**
 	 * Class constructor
@@ -49,8 +37,12 @@ public class View extends JFrame implements ActionListener {
 	 * @param width windows width
 	 * @param height windows height
 	 */
-	public View(String title,int width,int height) {
+	public View(String title,int width,int height, Model model) {
 		super(title);
+		this.model = model;
+		this.drawingPanel = new DrawingPanel(model);
+		addKeyListener(new KeyboardController(model));
+		addMouseListener(new MouseController(model));
 		build(width, height);
 	}
 
@@ -74,8 +66,6 @@ public class View extends JFrame implements ActionListener {
 		setResizable(true);
 		pack();
 		update();
-		timer.setRepeats(true);
-		timer.start();
 	}
 
 	/**
@@ -113,7 +103,7 @@ public class View extends JFrame implements ActionListener {
 			pathButtonsGroup.add(button);
 			button.setSelected(false);
 			GUIPanel.add(button);
-			button.addActionListener(new PathListener(this, pathButtonsGroup));
+			button.addActionListener(new PathListener(this, pathButtonsGroup, model));
 		}
 		pathButtons[0].setSelected(true);
 
@@ -126,9 +116,8 @@ public class View extends JFrame implements ActionListener {
 			shapeButtonGroup.add(button);
 			button.setSelected(false);
 			GUIPanel.add(button);
-			button.addActionListener(new ShapeListener(this, shapeButtonGroup));
+			button.addActionListener(new ShapeListener(this, shapeButtonGroup, model));
 		}
-		shapeButtons[0].setSelected(true);
 
 	}
 
@@ -141,16 +130,24 @@ public class View extends JFrame implements ActionListener {
 
 
 	/**
-	 * Event listener class for button selecting a Shape
+	 * Event listener class for button selecting a Shape, act as a controller
 	 */
 	private class ShapeListener implements ActionListener{
 
-		View view;
-		ButtonGroup group;
+		private final View view;
+		private final ButtonGroup group;
+		private final Model model;
 
-		public ShapeListener(View view, ButtonGroup group) {
+		/**
+		 * Create a Listener for the radio button selecting the shape
+		 * @param view the view the new button with listen to
+		 * @param group the button group the listened button belong to
+		 * @param model the model to modify
+		 */
+		public ShapeListener(View view, ButtonGroup group, Model model) {
 			this.view = view;
 			this.group = group;
+			this.model = model;
 		}
 
 		/**
@@ -170,28 +167,32 @@ public class View extends JFrame implements ActionListener {
 					selectedButtonText = button.getText();
 				}
 			}
-			switch (selectedButtonText){
-				case "Square":
-					model.setShape(new Square(new Point(100,100),10,10,view));
-					break;
-				case "Circle":
-					model.setShape(new Circle(new Point(200,200),(double) 10, view));
-					break;
+			switch (selectedButtonText) {
+				case "Square" -> this.model.setShape(new Square(new Point(100, 100), 10, 10, view));
+				case "Circle" -> this.model.setShape(new Circle(new Point(200, 200), (double) 10, view));
 			}
 		}
 	}
 
 	/**
-	 * Event listener class for button selecting a Path
+	 * Event listener class for button selecting a Path, act as controller
 	 */
 	private class PathListener implements ActionListener{
 
-		View view;
-		ButtonGroup group;
+		private final View view;
+		private final ButtonGroup group;
+		private final Model model;
 
-		public PathListener(View view, ButtonGroup group) {
+		/**
+		 * Create a Listener for the radio button selecting the path
+		 * @param view the view the new button with listen to
+		 * @param group the button group the listened button belong to
+		 * @param model the model to modify
+		 */
+		public PathListener(View view, ButtonGroup group, Model model) {
 			this.view = view;
 			this.group = group;
+			this.model = model;
 		}
 
 		/**
@@ -212,13 +213,9 @@ public class View extends JFrame implements ActionListener {
 				}
 			}
 			System.out.println(selectedButtonText);
-			switch (selectedButtonText){
-				case "Lemniscate":
-					model.setPath(new LemniscateOfBernoulli());
-					break;
-				case "Spiral":
-					model.setPath(new CirclePath());
-					break;
+			switch (selectedButtonText) {
+				case "Lemniscate" -> this.model.setPath(new LemniscateOfBernoulli());
+				case "Spiral" -> this.model.setPath(new CirclePath());
 			}
 		}
 	}
