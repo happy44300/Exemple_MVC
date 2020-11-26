@@ -3,10 +3,6 @@ package project;
 import project.path.CirclePath;
 import project.path.Path;
 import project.shape.Shapes;
-import project.shape.Square;
-
-import java.awt.*;
-import java.util.Observable;
 
 /**
  * The project model

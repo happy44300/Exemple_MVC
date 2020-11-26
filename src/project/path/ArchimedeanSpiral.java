@@ -10,7 +10,7 @@ public class ArchimedeanSpiral implements Path {
     /**
      * represent where we are on the path
      */
-    private int pos = 0;
+    private final int pos = 0;
 
 
     /**

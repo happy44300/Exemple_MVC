@@ -1,6 +1,5 @@
 package project.path;
 
-
 import java.awt.*;
 
 /**
@@ -11,7 +10,7 @@ public class LemniscateOfBernoulli implements Path {
     /**
      * represent where we are on the path
      */
-    private int pos = 0;
+    private final int pos = 0;
 
     /**
      * Get the point that are on this Path

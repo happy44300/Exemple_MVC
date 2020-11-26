@@ -1,7 +1,6 @@
 package project.shape;
 
 import project.View;
-
 import java.awt.*;
 
 /**

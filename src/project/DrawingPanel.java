@@ -1,10 +1,7 @@
 package project;
 
-import project.shape.Shapes;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * This class represent the panel on witch the shape are drawn
