@@ -27,6 +27,7 @@ public class Circle implements project.shape.Shapes {
 	 * Class constructor
 	 * @param center The center of the circle
 	 * @param radius The radius of the circle
+	 * @param view The view this Circle will update when moved
 	 */
 	public Circle(Point center, Double radius,View view) {
 		this._center = center;

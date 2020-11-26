@@ -27,6 +27,9 @@ public class Square implements Shapes {
 	 */
 	private int _rotation;
 
+	/**
+	 * The color of this shape
+	 */
 	private Color color;
 
 

@@ -11,10 +11,14 @@ import java.util.ArrayList;
  */
 public class DrawingPanel extends JPanel {
 
+    /**
+     * the model linked to this drawing panel
+     */
     private final Model model;
 
     /**
      * Creates a new DrawingPanel
+     * @param model The model this DrawingPanel will be linked to
      */
     public DrawingPanel(Model model) {
         this.model = model;

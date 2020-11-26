@@ -6,6 +6,9 @@ import project.shape.Shapes;
 
 import java.util.TimerTask;
 
+/**
+ * Define a controller used to update the model each tick
+ */
 public class TickController extends TimerTask {
     /**
      The model this controller will modify
@@ -32,8 +35,11 @@ public class TickController extends TimerTask {
         shape.rotate(shape.getRotation() + 1);
     }
 
+    /**
+     * The action to be performed by this timer task.
+     */
     @Override
     public void run() {
-                this.evolve();
+
     }
 }

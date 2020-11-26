@@ -36,6 +36,7 @@ public class View extends JFrame {
 	 * @param title the title of our windows that will be displayed to the user
 	 * @param width windows width
 	 * @param height windows height
+	 * @param model the model to be associated to this view
 	 */
 	public View(String title,int width,int height, Model model) {
 		super(title);
@@ -134,8 +135,19 @@ public class View extends JFrame {
 	 */
 	private class ShapeListener implements ActionListener{
 
+		/**
+		 * The view associated with this Listener
+		 */
 		private final View view;
+
+		/**
+		 * The group of the button we are listening to
+		 */
 		private final ButtonGroup group;
+
+		/**
+		 * The model to modify
+		 */
 		private final Model model;
 
 		/**
@@ -179,8 +191,19 @@ public class View extends JFrame {
 	 */
 	private class PathListener implements ActionListener{
 
+		/**
+		 * The view associated with this Listener
+		 */
 		private final View view;
+
+		/**
+		 * The group of the button we are listening to
+		 */
 		private final ButtonGroup group;
+
+		/**
+		 * The model to modify
+		 */
 		private final Model model;
 
 		/**

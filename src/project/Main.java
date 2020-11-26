@@ -5,6 +5,9 @@ import project.controller.TickController;
 import javax.swing.*;
 import java.util.Timer;
 
+/**
+ * The main class
+ */
 public class Main {
 
     /**
