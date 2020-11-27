@@ -1,5 +1,7 @@
 package project;
 
+import project.controller.KeyboardController;
+import project.controller.MouseController;
 import project.controller.TickController;
 
 import javax.swing.*;
@@ -20,6 +22,8 @@ public class Main {
 
         SwingUtilities.invokeLater(() -> {
             View view = new View("PROJEEEEET", 500, 500, model);
+            view.setMouseController(new MouseController(model));
+            view.setKeyBoardController(new KeyboardController(model));
             view.setVisible(true);
 
         });

@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 /**
  * project.controller.Controller class for mouse input
  */
-public class KeyboardController extends JPanel implements KeyListener {
+public class KeyboardController {
 
     /**
         Link this view to the model
@@ -24,28 +24,9 @@ public class KeyboardController extends JPanel implements KeyListener {
         this.model = model;
     }
 
-    /**
-     * Invoked when a key has been typed.
-     * See the class description for {@link KeyEvent} for a definition of
-     * a key typed event.
-     *
-     * @param e the event to be processed
-     */
-    @Override
-    public void keyTyped(KeyEvent e) {
-        System.out.println("event0");
-    }
+    public void notifyClick(KeyEvent event) {
+        System.out.println("keyboard clicked");
 
-    /**
-     * Invoked when a key has been pressed.
-     * See the class description for {@link KeyEvent} for a definition of
-     * a key pressed event.
-     *
-     * @param event the event to be processed
-     */
-    @Override
-    public void keyPressed(KeyEvent event) {
-        System.out.println("event1");
         if(event.getKeyCode() == KeyEvent.VK_PLUS){
             System.out.println("pressed +");
         }
@@ -54,15 +35,5 @@ public class KeyboardController extends JPanel implements KeyListener {
         }
     }
 
-    /**
-     * Invoked when a key has been released.
-     * See the class description for {@link KeyEvent} for a definition of
-     * a key released event.
-     *
-     * @param e the event to be processed
-     */
-    @Override
-    public void keyReleased(KeyEvent e) {
-        System.out.println("event2");
-    }
+
 }

@@ -42,17 +42,9 @@ public class View extends JFrame {
 		super(title);
 		this.model = model;
 		this.drawingPanel = new DrawingPanel(model);
-		addKeyListener(new KeyboardController(model));
-		addMouseListener(new MouseController(model));
+		addKeyListener(drawingPanel);
+		addMouseListener(drawingPanel);
 		build(width, height);
-	}
-
-	/**
-	 * Allow a class to access the model
-	 * @return This model
-	 */
-	public Model getModel() {
-		return model;
 	}
 
 	/**
@@ -87,6 +79,7 @@ public class View extends JFrame {
 		panel.add(GUIPanel, BorderLayout.LINE_END);
 		GUIPanel.setLayout(new BoxLayout(GUIPanel, BoxLayout.Y_AXIS));
 
+		/*
 		//add Speed slider
 		GUIPanel.add(new JLabel("Movement Speed"));
 		GUIPanel.add(new JSlider(JSlider.HORIZONTAL,0,100,0));
@@ -94,6 +87,7 @@ public class View extends JFrame {
 		//add rotation speed slider
 		GUIPanel.add(new JLabel("Rotation Speed"));
 		GUIPanel.add(new JSlider(JSlider.HORIZONTAL,0,100,0));
+		 */
 
 		//list all the possible Path that exist
 		GUIPanel.add(new JLabel("Select a Path"));
@@ -129,6 +123,12 @@ public class View extends JFrame {
 		drawingPanel.paintComponent(getGraphics());
 	}
 
+	public void setKeyBoardController(KeyboardController keyBoardController){
+		drawingPanel.setKeyboardController(keyBoardController);
+	}
+	public void setMouseController(MouseController mouseController){
+		drawingPanel.setMouseController(mouseController);
+	}
 
 	/**
 	 * Event listener class for button selecting a Shape, act as a controller
@@ -179,6 +179,9 @@ public class View extends JFrame {
 					selectedButtonText = button.getText();
 				}
 			}
+
+			drawingPanel.clearDrawing(this.view.getGraphics());
+
 			switch (selectedButtonText) {
 				case "Square" -> this.model.setShape(new Square(new Point(100, 100), 10, 10, view));
 				case "Circle" -> this.model.setShape(new Circle(new Point(200, 200), (double) 10, view));
@@ -235,9 +238,11 @@ public class View extends JFrame {
 					selectedButtonText = button.getText();
 				}
 			}
-			System.out.println(selectedButtonText);
+
+			drawingPanel.clearDrawing(this.view.getGraphics());
+
 			switch (selectedButtonText) {
-				case "Lemniscate" -> this.model.setPath(new LemniscateOfBernoulli());
+				case "Lemniscate" -> this.model.setPath(new LemniscateOfBernoulli(new Point(200,200),40));
 				case "Spiral" -> this.model.setPath(new CirclePath());
 			}
 		}

@@ -23,23 +23,17 @@ public class TickController extends TimerTask {
         this.model = model;
     }
 
-    /**
-     *  update the model state by updating it one tick further
-     */
-    public void evolve(){
-        Path path = model.getPath();
-        Shapes shape = model.getShape();
-
-        if(path == null || shape == null){return;}
-        shape.moveTo(path.getNextPoint());
-        shape.rotate(shape.getRotation() + 1);
-    }
 
     /**
      * The action to be performed by this timer task.
      */
     @Override
     public void run() {
+        Path path = model.getPath();
+        Shapes shape = model.getShape();
 
+        if(path == null || shape == null || path.isDone()){return;}
+        shape.moveTo(path.getNextPoint());
+        shape.rotate(shape.getRotation() + 1);
     }
 }

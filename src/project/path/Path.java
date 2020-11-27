@@ -12,4 +12,7 @@ public interface Path {
      * @return The next point followed by this Path
      */
     Point getNextPoint();
+
+
+    boolean isDone();
 }

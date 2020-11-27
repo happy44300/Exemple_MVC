@@ -1,8 +1,11 @@
 package project;
 
 import project.path.CirclePath;
+import project.path.LemniscateOfBernoulli;
 import project.path.Path;
 import project.shape.Shapes;
+
+import java.awt.*;
 
 /**
  * The project model
@@ -56,7 +59,8 @@ public class Model {
 	 */
 	public Model() {
 		this.shape = null;
-		this.path = new CirclePath();
+		this.path = new LemniscateOfBernoulli(new Point(200,200),20);
+		//this.path = new CirclePath();
 	}
 
 }

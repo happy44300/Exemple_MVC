@@ -22,6 +22,8 @@ public class CirclePath implements Path {
      */
     private final int offset = 200;
 
+    private boolean isDone = false;
+
     /**
      * Get the point that are on this src.path
      *
@@ -29,8 +31,13 @@ public class CirclePath implements Path {
      */
     @Override
     public Point getNextPoint() {
-        pos = pos >360 ? 0 : pos;
+        if(pos > 360) isDone = true;
         pos++;
         return new Point(((int) (Math.cos(pos)*speed)+offset),(int) (Math.sin(pos)*speed)+offset);
+    }
+
+    @Override
+    public boolean isDone() {
+        return isDone;
     }
 }

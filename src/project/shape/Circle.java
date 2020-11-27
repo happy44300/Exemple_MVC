@@ -22,6 +22,7 @@ public class Circle implements project.shape.Shapes {
 	 */
 	private final View _view;
 
+
 	/**
 	 * Class constructor
 	 * @param center The center of the circle

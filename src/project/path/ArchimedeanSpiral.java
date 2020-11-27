@@ -22,4 +22,9 @@ public class ArchimedeanSpiral implements Path {
     public Point getNextPoint() {
         return null;
     }
+
+    @Override
+    public boolean isDone() {
+        return false;
+    }
 }
