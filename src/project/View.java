@@ -100,7 +100,6 @@ public class View extends JFrame {
 			GUIPanel.add(button);
 			button.addActionListener(new PathListener(this, pathButtonsGroup, model));
 		}
-		pathButtons[0].setSelected(true);
 
 		//list all the possible Shapes that exists, this help make our code more easily extensible
 		GUIPanel.add(new JLabel("Select a path"));

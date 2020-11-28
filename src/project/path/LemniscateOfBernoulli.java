@@ -12,7 +12,7 @@ public class LemniscateOfBernoulli implements Path {
      */
     private double phi = -Math.PI;
     private  Point startPos;
-    private int offset;
+    private int speed;
     private int size;
     private boolean isDone;
 
@@ -20,6 +20,15 @@ public class LemniscateOfBernoulli implements Path {
         this.startPos = startPos;
         this.size = size;
         this.isDone = false;
+        this.speed = 10;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getSpeed() {
+        return speed;
     }
 
     /**
@@ -31,9 +40,9 @@ public class LemniscateOfBernoulli implements Path {
         if(this.phi > Math.PI){
             isDone = true;
         }
-        int x = (int) (startPos.x + (size * Math.sqrt(2) * (Math.sin(phi)/1+Math.pow(Math.cos(phi),2))));
-        int y = (int) (startPos.y + (size * Math.sqrt(2) * (Math.sin(phi)* Math.cos(phi)/1+Math.pow(Math.cos(phi),2))));
-        phi += 0.01;
+        int x = (int) (startPos.x + (size * Math.sqrt(2) * ((Math.sin(phi))/(1+Math.cos(phi)*Math.cos(phi)))));
+        int y = (int) (startPos.y + (size * Math.sqrt(2) * (Math.sin(phi)*Math.cos(phi))/(1+Math.cos(phi)*Math.cos(phi))));
+        phi += speed * 0.001;
         return new Point(x,y);
     }
 

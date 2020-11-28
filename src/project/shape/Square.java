@@ -45,6 +45,7 @@ public class Square implements Shapes {
 		this._size = size;
 		this._view = view;
 		this._rotation = rotation;
+		this.color = Color.BLACK;
 	}
 
 	/**
@@ -54,6 +55,7 @@ public class Square implements Shapes {
 	@Override
 	public void draw(Graphics graphics) {
 		Graphics2D g2d = (Graphics2D)graphics;
+		g2d.setColor(color);
 		g2d.rotate(Math.toRadians(this._rotation),this._topLeftCorner.x + this._size/2.0, this._topLeftCorner.y + this._size/2.0);
 		graphics.drawRect(this._topLeftCorner.x, this._topLeftCorner.y, _size, _size);
 
@@ -98,7 +100,8 @@ public class Square implements Shapes {
 	 */
 	@Override
 	public boolean contain(Point point) {
-		return false;
+		return point.x > this._topLeftCorner.x && point.x < _topLeftCorner.x +_size && point.y > _topLeftCorner.y
+		&& point.y < _topLeftCorner.y + _size;
 	}
 
 	/**

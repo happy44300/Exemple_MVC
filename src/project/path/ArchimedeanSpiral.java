@@ -10,7 +10,16 @@ public class ArchimedeanSpiral implements Path {
     /**
      * represent where we are on the path
      */
-    private final int pos = 0;
+    private int pos = 0;
+    private int speed = 10;
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
 
 
     /**
