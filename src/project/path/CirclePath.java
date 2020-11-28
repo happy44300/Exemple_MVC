@@ -37,6 +37,16 @@ public class CirclePath implements Path {
     }
 
     @Override
+    public void setSpeed(int speed) {
+
+    }
+
+    @Override
+    public int getSpeed() {
+        return 0;
+    }
+
+    @Override
     public boolean isDone() {
         return isDone;
     }

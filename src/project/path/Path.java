@@ -13,6 +13,9 @@ public interface Path {
      */
     Point getNextPoint();
 
+    void setSpeed(int speed);
+
+    int getSpeed();
 
     boolean isDone();
 }

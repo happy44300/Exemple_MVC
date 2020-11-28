@@ -29,9 +29,11 @@ public class KeyboardController {
 
         if(event.getKeyCode() == KeyEvent.VK_PLUS){
             System.out.println("pressed +");
+            model.getPath().setSpeed(model.getPath().getSpeed()+1);
         }
         if(event.getKeyChar() == '-'){
             System.out.println("pressed -");
+            model.getPath().setSpeed(model.getPath().getSpeed()-1);
         }
     }
 

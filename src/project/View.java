@@ -2,6 +2,7 @@ package project;
 
 import project.controller.KeyboardController;
 import project.controller.MouseController;
+import project.path.ArchimedeanSpiral;
 import project.path.CirclePath;
 import project.path.LemniscateOfBernoulli;
 import project.shape.Circle;
@@ -242,7 +243,7 @@ public class View extends JFrame {
 
 			switch (selectedButtonText) {
 				case "Lemniscate" -> this.model.setPath(new LemniscateOfBernoulli(new Point(200,200),40));
-				case "Spiral" -> this.model.setPath(new CirclePath());
+				case "Spiral" -> this.model.setPath(new ArchimedeanSpiral(new Point(200,200),10));
 			}
 		}
 	}
