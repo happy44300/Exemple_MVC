@@ -2,8 +2,7 @@ package project;
 
 import project.controller.KeyboardController;
 import project.controller.MouseController;
-import project.path.ArchimedeanSpiral;
-import project.path.CirclePath;
+import project.path.ArchimedesSpiral;
 import project.path.LemniscateOfBernoulli;
 import project.shape.Circle;
 import project.shape.Square;
@@ -123,9 +122,17 @@ public class View extends JFrame {
 		drawingPanel.paintComponent(getGraphics());
 	}
 
+	/**
+	 * Set the KeyBoardController to be used on the drawing panel
+	 * @param keyBoardController the KeyBoardController to be used
+	 */
 	public void setKeyBoardController(KeyboardController keyBoardController){
 		drawingPanel.setKeyboardController(keyBoardController);
 	}
+	/**
+	 * Set the MouseController to be used on the drawing panel
+	 * @param mouseController the MouseController to be used
+	 */
 	public void setMouseController(MouseController mouseController){
 		drawingPanel.setMouseController(mouseController);
 	}
@@ -183,7 +190,7 @@ public class View extends JFrame {
 			drawingPanel.clearDrawing(this.view.getGraphics());
 
 			switch (selectedButtonText) {
-				case "Square" -> this.model.setShape(new Square(new Point(100, 100), 10, 10, view));
+				case "Square" -> this.model.setShape(new Square(new Point(100, 100), 30, 10, view));
 				case "Circle" -> this.model.setShape(new Circle(new Point(200, 200), (double) 10, view));
 			}
 		}
@@ -242,8 +249,8 @@ public class View extends JFrame {
 			drawingPanel.clearDrawing(this.view.getGraphics());
 
 			switch (selectedButtonText) {
-				case "Lemniscate" -> this.model.setPath(new LemniscateOfBernoulli(new Point(200,200),40));
-				case "Spiral" -> this.model.setPath(new ArchimedeanSpiral(new Point(200,200),10));
+				case "Lemniscate" -> this.model.setPath(new LemniscateOfBernoulli(new Point(200,200),40,40));
+				case "Spiral" -> this.model.setPath(new ArchimedesSpiral(new Point(200,200),10,5));
 			}
 		}
 	}

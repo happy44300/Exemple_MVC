@@ -57,7 +57,7 @@ public class Square implements Shapes {
 		Graphics2D g2d = (Graphics2D)graphics;
 		g2d.setColor(color);
 		g2d.rotate(Math.toRadians(this._rotation),this._topLeftCorner.x + this._size/2.0, this._topLeftCorner.y + this._size/2.0);
-		graphics.drawRect(this._topLeftCorner.x, this._topLeftCorner.y, _size, _size);
+		graphics.fillRect(this._topLeftCorner.x, this._topLeftCorner.y, _size, _size);
 
 	}
 

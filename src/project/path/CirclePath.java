@@ -2,9 +2,14 @@ package project.path;
 
 import java.awt.*;
 
+
 /**
  * Define a circular path
+ * @deprecated
+ * this class no longer fully implement all the method used for a Path and was mainly used during devellopement for debuging purpose
+ *
  */
+@Deprecated(forRemoval = true)
 public class CirclePath implements Path {
 
     /**
@@ -22,6 +27,9 @@ public class CirclePath implements Path {
      */
     private final int offset = 200;
 
+    /**
+     * Are we done drawing this shape
+     */
     private boolean isDone = false;
 
     /**

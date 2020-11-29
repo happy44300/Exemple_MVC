@@ -46,10 +46,10 @@ public class Circle implements project.shape.Shapes {
 	 */
 	@Override
 	public void draw(Graphics graphics) {
-		int diameter = (int)(rad * 2);
-		int x = (int)(center.getX() - rad),
-			y = (int)(center.getY() - rad);
-		g.fillOval(x, y, diameter, diameter);
+		int diameter = (int)(_radius * 2);
+		int x = (int)(_center.x - _radius),
+			y = (int)(_center.y - _radius);
+		graphics.fillOval(x, y, diameter, diameter);
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class Circle implements project.shape.Shapes {
 	 */
 	@Override
 	public boolean contain(Point point) {
-		double dx = point.x - _center.x,
+		double dx = point.x - _center.x;
 		double dy = point.y - _center.y;
 		return dx*dx + dy*dy - _radius*_radius <= 0;
 	}

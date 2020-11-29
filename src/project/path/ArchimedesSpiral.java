@@ -3,9 +3,9 @@ package project.path;
 import java.awt.*;
 
 /**
- * Represent the points of a Lemniscate of Bernoulli
+ * Class representing a path
  */
-public class LemniscateOfBernoulli implements Path {
+public class ArchimedesSpiral implements Path {
 
     /**
      * The angle phi used in the formula
@@ -29,32 +29,16 @@ public class LemniscateOfBernoulli implements Path {
     private boolean isDone;
 
     /**
-     * Create a new path following the shape of a Lemniscate Of Bernoulli
-     * @param startPos the position of the first point
-     * @param size the size of the lemniscate
-     * @param speed the distance between each point on the shape
-     */
-    public LemniscateOfBernoulli(Point startPos, int size, int speed) {
-        this.startPos = startPos;
-        this.size = size;
-        this.speed = speed;
-        this.isDone = false;
-        this.phi = -Math.PI;
-    }
-
-    /**
-     * Set the drawing speed of the Lemniscate*
+     * Set the drawing speed of the Spiral
      * @param speed  A int representing the speed it should always be a positive number
      */
     @Override
     public void setSpeed(int speed) {
-        if(speed > 0) {
-            this.speed = speed;
-        }
+        this.speed = speed;
     }
 
     /**
-     * Get the drawing speed of the Lemniscate
+     * Get the drawing speed of the Spiral
      * @return A int representing the speed
      */
     @Override
@@ -63,21 +47,38 @@ public class LemniscateOfBernoulli implements Path {
     }
 
     /**
-     * Get the next point on the Lemniscate
+     * Create an ArchimedesSpiral
+     * @param startPos the position the first point will be
+     * @param size the size of the spiral
+     * @param speed distance between each point
+     */
+    public ArchimedesSpiral(Point startPos, int size, int speed) {
+        this.size = size;
+        this.startPos = startPos;
+        this.phi=0;
+        this.speed = speed;
+        this.isDone = false;
+
+    }
+
+
+    /**
+     * Get the next point on the Spiral
      * Note: this method still work even if isDone() is true
-     * In that case it will simply start looping on itself
+     * In that case it will simply keep going and may leave the screen
      * Use isDone() before calling this function to avoid an overrun
      * @return The next point followed by this Path
      */
     @Override
     public Point getNextPoint() {
+        int x = (int) (startPos.x + size * (-phi) * Math.cos(phi));
+        int y = (int) (startPos.y + size *(-phi)*Math.sin(phi));
 
-        if(this.phi > Math.PI){
+        if(this.phi <= 5*Math.PI) {
+            this.phi += speed * 0.01;
+        }else {
             isDone = true;
         }
-        int x = (int) (startPos.x + (size * ((Math.sin(phi))/(1+Math.cos(phi)*Math.cos(phi)))));
-        int y = (int) (startPos.y + (size * (Math.sin(phi)*Math.cos(phi))/(1+Math.cos(phi)*Math.cos(phi))));
-        phi += speed * 0.001;
         return new Point(x,y);
     }
 

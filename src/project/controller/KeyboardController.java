@@ -2,28 +2,30 @@ package project.controller;
 
 import project.Model;
 
-import javax.swing.*;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 /**
- * project.controller.Controller class for mouse input
+ * Controller for keyboard related event
  */
 public class KeyboardController {
 
     /**
-        Link this view to the model
+        Link this controller to the model
      */
     private final Model model;
 
     /**
-     * Create a new keyboard controller to listen for specific key event
+     * Create a new keyboard controller to listen for key event
      * @param model The model to modify
      */
     public KeyboardController(Model model) {
         this.model = model;
     }
 
+    /**
+     * Notify this controller that a keyboard event has occured
+     * @param event the KeyEvent thas has occured
+     */
     public void notifyClick(KeyEvent event) {
         System.out.println("keyboard clicked");
 

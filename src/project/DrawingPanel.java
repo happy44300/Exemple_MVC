@@ -20,13 +20,28 @@ public class DrawingPanel extends JPanel implements KeyListener, MouseListener {
      */
     private final Model model;
 
+    /**
+     * The KeyBoard controller that this view will notify when an keyboard event occur
+     */
     private  KeyboardController keyboardController;
+
+    /**
+     * The MouseController that this view will notify when a mouse event occur
+     */
     private MouseController mouseController;
 
+    /**
+     * Set the keyboard controller to use
+     * @param keyboardController the KeyboardController to use
+     */
     public void setKeyboardController(KeyboardController keyboardController) {
         this.keyboardController = keyboardController;
     }
 
+    /**
+     * Set the MouseController to use
+     * @param mouseController the MouseController to use
+     */
     public void setMouseController(MouseController mouseController) {
         this.mouseController = mouseController;
     }
@@ -48,6 +63,10 @@ public class DrawingPanel extends JPanel implements KeyListener, MouseListener {
                 model.getShape().draw(graphics);
     }
 
+    /**
+     * Delete all the Shape currently drawn
+     * @param graphics the graphic to clear
+     */
     public void clearDrawing(Graphics graphics){
         super.paintComponent(graphics);
     }
