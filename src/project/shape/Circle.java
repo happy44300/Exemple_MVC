@@ -21,6 +21,11 @@ public class Circle implements project.shape.Shapes {
 	 * The view linked to this square
 	 */
 	private final View _view;
+	
+	/**
+	 * The color of this shape
+	 */
+	private Color color;
 
 
 	/**
@@ -33,6 +38,7 @@ public class Circle implements project.shape.Shapes {
 		this._center = center;
 		this._radius = radius;
 		this._view = view;
+		this.color = Color.BLACK;
 	}
 
 	/**
@@ -40,7 +46,10 @@ public class Circle implements project.shape.Shapes {
 	 */
 	@Override
 	public void draw(Graphics graphics) {
-
+		int diameter = (int)(rad * 2);
+		int x = (int)(center.getX() - rad),
+			y = (int)(center.getY() - rad);
+		g.fillOval(x, y, diameter, diameter);
 	}
 
 	/**
@@ -51,6 +60,7 @@ public class Circle implements project.shape.Shapes {
 	@Override
 	public void moveTo(Point position) {
 		this._center = position;
+		_view.update();
 	}
 
 
@@ -60,9 +70,7 @@ public class Circle implements project.shape.Shapes {
 	 * @param angle the angle to rotate in degrees between 0 and 360
 	 */
 	@Override
-	public void rotate(int angle) {
-
-	}
+	public void rotate(int angle) {}
 
 	/**
 	 * Gets the color of a src.shape
@@ -71,7 +79,7 @@ public class Circle implements project.shape.Shapes {
 	 */
 	@Override
 	public Color getColor() {
-		return null;
+		return this.color;
 	}
 
 	/**
@@ -81,7 +89,7 @@ public class Circle implements project.shape.Shapes {
 	 */
 	@Override
 	public void setColor(Color color) {
-
+		this.color = color;
 	}
 
 	/**
@@ -101,6 +109,8 @@ public class Circle implements project.shape.Shapes {
 	 */
 	@Override
 	public boolean contain(Point point) {
-		return false;
+		double dx = point.x - _center.x,
+		double dy = point.y - _center.y;
+		return dx*dx + dy*dy - _radius*_radius <= 0;
 	}
 }
