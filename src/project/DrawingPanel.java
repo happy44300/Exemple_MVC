@@ -59,16 +59,17 @@ public class DrawingPanel extends JPanel implements KeyListener, MouseListener {
      * @param graphics The graphic context drawn on
      */
     public void paintComponent(Graphics graphics) {
-            if (model.getShape() != null)
+            if (model.getShape() != null) {
+                //super.paintComponent(graphics);
                 model.getShape().draw(graphics);
+            }
     }
 
     /**
      * Delete all the Shape currently drawn
      * @param graphics the graphic to clear
      */
-    public void clearDrawing(Graphics graphics){
-        super.paintComponent(graphics);
+    public void clearDrawing(Graphics graphics){ super.paintComponent(graphics);
     }
 
     /**
@@ -79,9 +80,7 @@ public class DrawingPanel extends JPanel implements KeyListener, MouseListener {
      * @param e the event to be processed
      */
     @Override
-    public void keyTyped(KeyEvent e) {
-        keyboardController.notifyClick(e);
-    }
+    public void keyTyped(KeyEvent e) { keyboardController.notifyClick(e); }
 
     /**
      * Invoked when a key has been pressed.
@@ -91,9 +90,7 @@ public class DrawingPanel extends JPanel implements KeyListener, MouseListener {
      * @param e the event to be processed
      */
     @Override
-    public void keyPressed(KeyEvent e) {
-        keyboardController.notifyClick(e);
-    }
+    public void keyPressed(KeyEvent e) { keyboardController.notifyClick(e); }
 
     /**
      * Invoked when a key has been released.
@@ -103,9 +100,7 @@ public class DrawingPanel extends JPanel implements KeyListener, MouseListener {
      * @param e the event to be processed
      */
     @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
+    public void keyReleased(KeyEvent e) { }
 
     /**
      * Invoked when the mouse button has been clicked (pressed

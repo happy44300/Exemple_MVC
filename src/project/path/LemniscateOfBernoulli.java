@@ -51,6 +51,9 @@ public class LemniscateOfBernoulli implements Path {
         if(speed > 0) {
             this.speed = speed;
         }
+        else {
+            throw new IllegalArgumentException("speed must be > 0");
+        }
     }
 
     /**

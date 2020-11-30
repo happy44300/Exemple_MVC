@@ -27,15 +27,16 @@ public class KeyboardController {
      * @param event the KeyEvent thas has occured
      */
     public void notifyClick(KeyEvent event) {
-        System.out.println("keyboard clicked");
 
-        if(event.getKeyCode() == KeyEvent.VK_PLUS){
-            System.out.println("pressed +");
+        if(model.getPath() == null) return;
+
+        if(event.getKeyChar() == '+'){
             model.getPath().setSpeed(model.getPath().getSpeed()+1);
         }
-        if(event.getKeyChar() == '-'){
-            System.out.println("pressed -");
-            model.getPath().setSpeed(model.getPath().getSpeed()-1);
+        if(event.getKeyChar() == KeyEvent.VK_MINUS){
+            int newSpeed =  model.getPath().getSpeed() - 1;
+            if(newSpeed > 0)
+                model.getPath().setSpeed(newSpeed);
         }
     }
 

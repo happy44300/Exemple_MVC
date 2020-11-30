@@ -4,6 +4,7 @@ import project.Model;
 import project.path.Path;
 import project.shape.Shapes;
 
+import java.awt.*;
 import java.util.TimerTask;
 
 /**
@@ -32,8 +33,13 @@ public class TickController extends TimerTask {
         Path path = model.getPath();
         Shapes shape = model.getShape();
 
-        if(path == null || shape == null || path.isDone()){return;}
-        shape.moveTo(path.getNextPoint());
-        shape.rotate(shape.getRotation() + 1);
+
+        if(path == null || shape == null){return;}
+        //System.out.println(shape.getPos());
+        if( !path.isDone()) {
+            Point nexPoint = path.getNextPoint();
+            shape.moveTo(nexPoint);
+            shape.rotate(shape.getRotation() + 1);
+        }
     }
 }

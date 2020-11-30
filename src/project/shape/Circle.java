@@ -1,6 +1,7 @@
 package project.shape;
 
 import project.View;
+
 import java.awt.*;
 
 /**
@@ -49,7 +50,8 @@ public class Circle implements project.shape.Shapes {
 		int diameter = (int)(_radius * 2);
 		int x = (int)(_center.x - _radius),
 			y = (int)(_center.y - _radius);
-		graphics.fillOval(x, y, diameter, diameter);
+		graphics.setColor(color);
+		graphics.fillOval(x + this._radius.intValue(), y , diameter, diameter);
 	}
 
 	/**

@@ -34,7 +34,13 @@ public class ArchimedesSpiral implements Path {
      */
     @Override
     public void setSpeed(int speed) {
-        this.speed = speed;
+
+        if(speed > 0) {
+            this.speed = speed;
+        }
+        else {
+            throw new IllegalArgumentException("speed must be > 0");
+        }
     }
 
     /**

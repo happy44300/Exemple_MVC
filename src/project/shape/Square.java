@@ -100,8 +100,8 @@ public class Square implements Shapes {
 	 */
 	@Override
 	public boolean contain(Point point) {
-		return point.x > this._topLeftCorner.x && point.x < _topLeftCorner.x +_size && point.y > _topLeftCorner.y
-		&& point.y < _topLeftCorner.y + _size;
+		return point.x >= this._topLeftCorner.x && point.x <= _topLeftCorner.x +_size && point.y >= _topLeftCorner.y
+		&& point.y <= _topLeftCorner.y + _size;
 	}
 
 	/**
@@ -123,4 +123,5 @@ public class Square implements Shapes {
 	public void setColor(Color color) {
 		this.color = color;
 	}
+
 }

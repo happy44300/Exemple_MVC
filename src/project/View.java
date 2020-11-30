@@ -42,8 +42,10 @@ public class View extends JFrame {
 		super(title);
 		this.model = model;
 		this.drawingPanel = new DrawingPanel(model);
-		addKeyListener(drawingPanel);
-		addMouseListener(drawingPanel);
+		getContentPane().setFocusable(true);
+		getContentPane().requestFocus();
+		getContentPane().addKeyListener(this.drawingPanel);
+		getContentPane().addMouseListener(this.drawingPanel);
 		build(width, height);
 	}
 
@@ -68,26 +70,21 @@ public class View extends JFrame {
 
 		//create main panel
 		JPanel panel = new JPanel();
+		panel.setFocusable(false);
 		getContentPane().add(panel);
 		panel.setLayout(new BorderLayout());
 
 		//add the panel used for render
 		panel.add(drawingPanel, BorderLayout.CENTER);
+		drawingPanel.setFocusable(false);
+		drawingPanel.requestFocusInWindow();
 
 		//create the panel used as a container for GUI interface
 		JPanel GUIPanel = new JPanel();
 		panel.add(GUIPanel, BorderLayout.LINE_END);
 		GUIPanel.setLayout(new BoxLayout(GUIPanel, BoxLayout.Y_AXIS));
+		GUIPanel.setFocusable(false);
 
-		/*
-		//add Speed slider
-		GUIPanel.add(new JLabel("Movement Speed"));
-		GUIPanel.add(new JSlider(JSlider.HORIZONTAL,0,100,0));
-
-		//add rotation speed slider
-		GUIPanel.add(new JLabel("Rotation Speed"));
-		GUIPanel.add(new JSlider(JSlider.HORIZONTAL,0,100,0));
-		 */
 
 		//list all the possible Path that exist
 		GUIPanel.add(new JLabel("Select a Path"));
@@ -97,6 +94,7 @@ public class View extends JFrame {
 		for (JRadioButton button : pathButtons){
 			pathButtonsGroup.add(button);
 			button.setSelected(false);
+			button.setFocusable(false);
 			GUIPanel.add(button);
 			button.addActionListener(new PathListener(this, pathButtonsGroup, model));
 		}
@@ -109,6 +107,7 @@ public class View extends JFrame {
 		for (JRadioButton button : shapeButtons){
 			shapeButtonGroup.add(button);
 			button.setSelected(false);
+			button.setFocusable(false);
 			GUIPanel.add(button);
 			button.addActionListener(new ShapeListener(this, shapeButtonGroup, model));
 		}
@@ -190,8 +189,8 @@ public class View extends JFrame {
 			drawingPanel.clearDrawing(this.view.getGraphics());
 
 			switch (selectedButtonText) {
-				case "Square" -> this.model.setShape(new Square(new Point(100, 100), 30, 10, view));
-				case "Circle" -> this.model.setShape(new Circle(new Point(200, 200), (double) 10, view));
+				case "Square" -> this.model.setShape(new Square(new Point(100, 100), 20, 10, view));
+				case "Circle" -> this.model.setShape(new Circle(new Point(200, 200), (double) 20, view));
 			}
 		}
 	}
@@ -249,8 +248,8 @@ public class View extends JFrame {
 			drawingPanel.clearDrawing(this.view.getGraphics());
 
 			switch (selectedButtonText) {
-				case "Lemniscate" -> this.model.setPath(new LemniscateOfBernoulli(new Point(200,200),40,40));
-				case "Spiral" -> this.model.setPath(new ArchimedesSpiral(new Point(200,200),10,5));
+				case "Lemniscate" -> this.model.setPath(new LemniscateOfBernoulli(new Point(200,200),100,20));
+				case "Spiral" -> this.model.setPath(new ArchimedesSpiral(new Point(200,200),10,2));
 			}
 		}
 	}
