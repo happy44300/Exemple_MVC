@@ -80,18 +80,18 @@ public class Circle implements project.shape.Shapes {
 	 * @return This src.shape color
 	 */
 	@Override
-	public Color getColor() {
+	public Color get_color() {
 		return this.color;
 	}
 
 	/**
 	 * Change the color of a src.shape
 	 *
-	 * @param color The new color of the src.shape
+	 * @param _color The new color of the src.shape
 	 */
 	@Override
-	public void setColor(Color color) {
-		this.color = color;
+	public void set_color(Color _color) {
+		this.color = _color;
 	}
 
 	/**

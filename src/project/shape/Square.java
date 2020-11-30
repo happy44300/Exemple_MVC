@@ -30,7 +30,13 @@ public class Square implements Shapes {
 	/**
 	 * The color of this shape
 	 */
-	private Color color;
+	private Color _color;
+
+	/**
+	 * Register click that are slightly off to make it easier to click
+	 * Set to 0 to dissable
+	 * */
+	private final int _hitBoxTolerance = 15;
 
 
 	/**
@@ -45,7 +51,7 @@ public class Square implements Shapes {
 		this._size = size;
 		this._view = view;
 		this._rotation = rotation;
-		this.color = Color.BLACK;
+		this._color = Color.BLACK;
 	}
 
 	/**
@@ -55,7 +61,7 @@ public class Square implements Shapes {
 	@Override
 	public void draw(Graphics graphics) {
 		Graphics2D g2d = (Graphics2D)graphics;
-		g2d.setColor(color);
+		g2d.setColor(_color);
 		g2d.rotate(Math.toRadians(this._rotation),this._topLeftCorner.x + this._size/2.0, this._topLeftCorner.y + this._size/2.0);
 		graphics.fillRect(this._topLeftCorner.x, this._topLeftCorner.y, _size, _size);
 
@@ -100,8 +106,8 @@ public class Square implements Shapes {
 	 */
 	@Override
 	public boolean contain(Point point) {
-		return point.x >= this._topLeftCorner.x && point.x <= _topLeftCorner.x +_size && point.y >= _topLeftCorner.y
-		&& point.y <= _topLeftCorner.y + _size;
+		return point.x >= this._topLeftCorner.x - _hitBoxTolerance && point.x <= _topLeftCorner.x +_size + _hitBoxTolerance && point.y >= _topLeftCorner.y - _hitBoxTolerance
+		&& point.y <= _topLeftCorner.y + _size + _hitBoxTolerance;
 	}
 
 	/**
@@ -110,18 +116,18 @@ public class Square implements Shapes {
 	 * @return This shape color
 	 */
 	@Override
-	public Color getColor() {
-		return this.color;
+	public Color get_color() {
+		return this._color;
 	}
 
 	/**
 	 * Change the color of a src.shape
 	 *
-	 * @param color The new color of the src.shape
+	 * @param _color The new color of the src.shape
 	 */
 	@Override
-	public void setColor(Color color) {
-		this.color = color;
+	public void set_color(Color _color) {
+		this._color = _color;
 	}
 
 }
