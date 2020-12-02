@@ -1,5 +1,6 @@
 package project;
 
+import project.controller.ButtonController;
 import project.controller.KeyboardController;
 import project.controller.MouseController;
 import project.path.ArchimedesSpiral;
@@ -29,7 +30,11 @@ public class View extends JFrame {
 	 */
 	private final DrawingPanel drawingPanel;
 
-
+	/**
+	 * The controler used for button-model communication
+	 * Final because changing controller require rebuilding the view with this implementation
+	 */
+	private final ButtonController buttonController;
 
 	/**
 	 * Class constructor
@@ -38,10 +43,11 @@ public class View extends JFrame {
 	 * @param height windows height
 	 * @param model the model to be associated to this view
 	 */
-	public View(String title,int width,int height, Model model) {
+	public View(String title,int width,int height, Model model, ButtonController buttonController) {
 		super(title);
 		this.model = model;
 		this.drawingPanel = new DrawingPanel(model);
+		this.buttonController = buttonController;
 		getContentPane().setFocusable(true);
 		getContentPane().requestFocus();
 		getContentPane().addKeyListener(this.drawingPanel);
@@ -96,7 +102,7 @@ public class View extends JFrame {
 			button.setSelected(false);
 			button.setFocusable(false);
 			GUIPanel.add(button);
-			button.addActionListener(new PathListener(this, pathButtonsGroup, model));
+			button.addActionListener(new PathListener(this, pathButtonsGroup, buttonController));
 		}
 
 		//list all the possible Shapes that exists, this help make our code more easily extensible
@@ -109,7 +115,7 @@ public class View extends JFrame {
 			button.setSelected(false);
 			button.setFocusable(false);
 			GUIPanel.add(button);
-			button.addActionListener(new ShapeListener(this, shapeButtonGroup, model));
+			button.addActionListener(new ShapeListener(this, shapeButtonGroup, buttonController));
 		}
 
 	}
@@ -152,20 +158,20 @@ public class View extends JFrame {
 		private final ButtonGroup group;
 
 		/**
-		 * The model to modify
+		 * The controller to notify
 		 */
-		private final Model model;
+		private final ButtonController buttonController;
 
 		/**
 		 * Create a Listener for the radio button selecting the shape
 		 * @param view the view the new button with listen to
 		 * @param group the button group the listened button belong to
-		 * @param model the model to modify
+		 * @param buttonController the controller to notify
 		 */
-		public ShapeListener(View view, ButtonGroup group, Model model) {
+		public ShapeListener(View view, ButtonGroup group, ButtonController buttonController) {
 			this.view = view;
 			this.group = group;
-			this.model = model;
+			this.buttonController = buttonController;
 		}
 
 		/**
@@ -189,8 +195,8 @@ public class View extends JFrame {
 			drawingPanel.clearDrawing(this.view.getGraphics());
 
 			switch (selectedButtonText) {
-				case "Square" -> this.model.setShape(new Square(new Point(100, 100), 20, 10, view));
-				case "Circle" -> this.model.setShape(new Circle(new Point(200, 200), (double) 20, view));
+				case "Square" -> buttonController.notifyShapeUpdate(new Square(new Point(100, 100), 20, 10, view));
+				case "Circle" -> buttonController.notifyShapeUpdate(new Circle(new Point(200, 200), (double) 20, view));
 			}
 		}
 	}
@@ -211,20 +217,20 @@ public class View extends JFrame {
 		private final ButtonGroup group;
 
 		/**
-		 * The model to modify
+		 * The controller to notify
 		 */
-		private final Model model;
+		private final ButtonController buttonController;
 
 		/**
 		 * Create a Listener for the radio button selecting the path
 		 * @param view the view the new button with listen to
 		 * @param group the button group the listened button belong to
-		 * @param model the model to modify
+		 * @param buttonController the button controller to notify
 		 */
-		public PathListener(View view, ButtonGroup group, Model model) {
+		public PathListener(View view, ButtonGroup group, ButtonController buttonController) {
 			this.view = view;
 			this.group = group;
-			this.model = model;
+			this.buttonController = buttonController;
 		}
 
 		/**
@@ -248,8 +254,8 @@ public class View extends JFrame {
 			drawingPanel.clearDrawing(this.view.getGraphics());
 
 			switch (selectedButtonText) {
-				case "Lemniscate" -> this.model.setPath(new LemniscateOfBernoulli(new Point(200,200),100,20));
-				case "Spiral" -> this.model.setPath(new ArchimedesSpiral(new Point(200,200),10,2));
+				case "Lemniscate" -> buttonController.notifyPathUpdate(new LemniscateOfBernoulli(new Point(200,200),100,20));
+				case "Spiral" -> buttonController.notifyPathUpdate(new ArchimedesSpiral(new Point(200,200),10,2));
 			}
 		}
 	}

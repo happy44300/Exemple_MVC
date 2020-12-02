@@ -32,10 +32,7 @@ public class TickController extends TimerTask {
     public void run() {
         Path path = model.getPath();
         Shapes shape = model.getShape();
-
-
         if(path == null || shape == null){return;}
-        //System.out.println(shape.getPos());
         if( !path.isDone()) {
             Point nexPoint = path.getNextPoint();
             shape.moveTo(nexPoint);
