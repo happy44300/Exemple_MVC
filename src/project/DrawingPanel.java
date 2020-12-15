@@ -23,7 +23,7 @@ public class DrawingPanel extends JPanel implements KeyListener, MouseListener {
     /**
      * The KeyBoard controller that this view will notify when an keyboard event occur
      */
-    private  KeyboardController keyboardController;
+    private KeyboardController keyboardController;
 
     /**
      * The MouseController that this view will notify when a mouse event occur

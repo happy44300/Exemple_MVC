@@ -29,6 +29,7 @@ public class Main {
             view.setMouseController(mouseController);
             view.setKeyBoardController(keyboardController);
             view.setVisible(true);
+            view.setResizable(false);
         });
 
         Timer timer = new Timer();

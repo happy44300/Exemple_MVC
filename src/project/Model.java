@@ -5,7 +5,7 @@ import project.shape.Shapes;
 
 
 /**
- * The project model
+ * Represent a model
  */
 public class Model {
 

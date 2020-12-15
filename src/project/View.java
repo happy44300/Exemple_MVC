@@ -42,6 +42,7 @@ public class View extends JFrame {
 	 * @param width windows width
 	 * @param height windows height
 	 * @param model the model to be associated to this view
+	 * @param buttonController The controller to use for button
 	 */
 	public View(String title,int width,int height, Model model, ButtonController buttonController) {
 		super(title);
@@ -168,7 +169,7 @@ public class View extends JFrame {
 		 * @param group the button group the listened button belong to
 		 * @param buttonController the controller to notify
 		 */
-		public ShapeListener(View view, ButtonGroup group, ButtonController buttonController) {
+		private ShapeListener(View view, ButtonGroup group, ButtonController buttonController) {
 			this.view = view;
 			this.group = group;
 			this.buttonController = buttonController;
@@ -227,7 +228,7 @@ public class View extends JFrame {
 		 * @param group the button group the listened button belong to
 		 * @param buttonController the button controller to notify
 		 */
-		public PathListener(View view, ButtonGroup group, ButtonController buttonController) {
+		private PathListener(View view, ButtonGroup group, ButtonController buttonController) {
 			this.view = view;
 			this.group = group;
 			this.buttonController = buttonController;

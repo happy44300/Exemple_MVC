@@ -7,7 +7,7 @@ import java.awt.*;
 /**
  * Class representing a circle
  */
-public class Circle implements project.shape.Shapes {
+public class Circle implements Shapes {
 
 	/**
 	 * The center of this circle
@@ -26,7 +26,7 @@ public class Circle implements project.shape.Shapes {
 	/**
 	 * The color of this shape
 	 */
-	private Color color;
+	private Color _color;
 
 
 	/**
@@ -39,7 +39,7 @@ public class Circle implements project.shape.Shapes {
 		this._center = center;
 		this._radius = radius;
 		this._view = view;
-		this.color = Color.BLACK;
+		this._color = Color.BLACK;
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class Circle implements project.shape.Shapes {
 		int diameter = (int)(_radius * 2);
 		int x = (int)(_center.x - _radius),
 			y = (int)(_center.y - _radius);
-		graphics.setColor(color);
+		graphics.setColor(_color);
 		graphics.fillOval(x + this._radius.intValue(), y , diameter, diameter);
 	}
 
@@ -80,18 +80,18 @@ public class Circle implements project.shape.Shapes {
 	 * @return This src.shape color
 	 */
 	@Override
-	public Color get_color() {
-		return this.color;
+	public Color GetColor() {
+		return this._color;
 	}
 
 	/**
 	 * Change the color of a src.shape
 	 *
-	 * @param _color The new color of the src.shape
+	 * @param color The new color of the src.shape
 	 */
 	@Override
-	public void set_color(Color _color) {
-		this.color = _color;
+	public void setColor(Color color) {
+		this._color = color;
 	}
 
 	/**

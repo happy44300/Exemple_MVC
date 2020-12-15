@@ -32,14 +32,14 @@ public interface Shapes {
      *
      * @return This src.shape color
      */
-    Color get_color();
+    Color GetColor();
 
     /**
      * Change the color of a src.shape
      *
      * @param _color The new color of the src.shape
      */
-    void set_color(Color _color);
+    void setColor(Color _color);
 
     /**
      * Get the rotation of a shape

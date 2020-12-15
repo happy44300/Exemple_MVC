@@ -116,7 +116,7 @@ public class Square implements Shapes {
 	 * @return This shape color
 	 */
 	@Override
-	public Color get_color() {
+	public Color GetColor() {
 		return this._color;
 	}
 
@@ -126,7 +126,7 @@ public class Square implements Shapes {
 	 * @param _color The new color of the src.shape
 	 */
 	@Override
-	public void set_color(Color _color) {
+	public void setColor(Color _color) {
 		this._color = _color;
 	}
 
